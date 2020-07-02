@@ -6,20 +6,30 @@ using System.Web.Mvc;
 
 namespace SmartBookingApp.Controllers
 {
-    
     public class MusicAndEntertainmentController : Controller
     {
+        //Reference to object
         private Manager m = new Manager();
+
         // GET: MusicAndEntertainment
         public ActionResult Index()
         {
-            return View();
+            return View(m.MusicAndEntertainmentGetAll());
         }
 
         // GET: MusicAndEntertainment/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int ? id)
         {
-            return View();
+            var obj = m.HealthAndBeautyGetById(id.GetValueOrDefault());
+
+            if (obj == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(obj);
+            }
         }
 
         // GET: MusicAndEntertainment/Create

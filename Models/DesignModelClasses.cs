@@ -25,4 +25,29 @@ namespace SmartBookingApp.Models
         public string Name { get; set; }
     }
 
+    public class Restaurant
+    {
+        public int RestaurantId { get; set; }
+
+        [Required, StringLength(100)]
+        public string Name { get; set; }
+    }
+
+
+    public class MusicAndEntertainment
+    {
+        public int MusicAndEntertainmentId { get; set; }
+
+        [Required, StringLength(100)]
+        public string Name { get; set; }
+    }
+
+    public class HealthAndBeauty
+    {
+        public int HealthAndBeautyId { get; set; }
+
+        [Required, StringLength(100)]
+        public string Name { get; set; }
+    }
+
 }

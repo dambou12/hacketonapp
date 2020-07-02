@@ -6,23 +6,24 @@ using System.Web.Mvc;
 
 namespace SmartBookingApp.Controllers
 {
-    public class HealthAndBeautyController : Controller
+    public class RestaurantController : Controller
     {
         //Reference to object
         private Manager m = new Manager();
 
-        // GET: HealthAndBeauty
+        // GET: Restaurant
         public ActionResult Index()
         {
-            return View(m.HealthAndBeautyGetAll());
+            return View(m.RestaurantGetAll());
         }
 
-        // GET: HealthAndBeauty/Details/5
+        // GET: Restaurant/Details/5
         public ActionResult Details(int ? id)
         {
-            var obj = m.HealthAndBeautyGetById(id.GetValueOrDefault());
+            var obj = m.RestaurantById(id.GetValueOrDefault());
 
-            if (obj == null)
+            if(obj == null)
+
             {
                 return HttpNotFound();
             }
@@ -33,13 +34,14 @@ namespace SmartBookingApp.Controllers
         }
 
 
-        // GET: HealthAndBeauty/Create
+
+        // GET: Restaurant/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: HealthAndBeauty/Create
+        // POST: Restaurant/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -55,13 +57,13 @@ namespace SmartBookingApp.Controllers
             }
         }
 
-        // GET: HealthAndBeauty/Edit/5
+        // GET: Restaurant/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: HealthAndBeauty/Edit/5
+        // POST: Restaurant/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -77,13 +79,13 @@ namespace SmartBookingApp.Controllers
             }
         }
 
-        // GET: HealthAndBeauty/Delete/5
+        // GET: Restaurant/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: HealthAndBeauty/Delete/5
+        // POST: Restaurant/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

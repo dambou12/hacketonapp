@@ -51,6 +51,15 @@ namespace SmartBookingApp.Controllers
                 // Object mapper definitions
 
                 cfg.CreateMap<Models.RegisterViewModel, Models.RegisterViewModelForm>();
+
+                //Restaurant
+                cfg.CreateMap<RestaurantBaseViewModel, Restaurant>();
+                //HealthAndBeauty
+                cfg.CreateMap<HealthAndBeautyBaseViewModel, HealthAndBeauty>();
+                //musicAndEntertainment
+                cfg.CreateMap<MusicAndEntertainmentBaseViewModel, MusicAndEntertainment>();
+
+            
             });
 
             mapper = config.CreateMapper();
@@ -84,6 +93,51 @@ namespace SmartBookingApp.Controllers
         // ProductAdd()
         // ProductEdit()
         // ProductDelete()
+
+        //RestaurantGetAll()
+        public IEnumerable<RestaurantBaseViewModel> RestaurantGetAll()
+        {
+            return mapper.Map<IEnumerable<Restaurant>, IEnumerable<RestaurantBaseViewModel>>(ds.Restaurant.OrderBy(c => c.RestaurantId));
+        }
+
+        //RestaurantGetById
+        public RestaurantBaseViewModel RestaurantById(int id)
+        {
+            var obj = ds.Restaurant.Find(id);
+
+            return obj == null ? null : mapper.Map<Restaurant, RestaurantBaseViewModel>(obj);
+        }
+
+        //HealthAndBeauty
+        public IEnumerable<HealthAndBeautyBaseViewModel> HealthAndBeautyGetAll()
+        {
+            return mapper.Map<IEnumerable<HealthAndBeauty>, IEnumerable<HealthAndBeautyBaseViewModel>>(ds.HealthAndBeauty.OrderBy(c => c.HealthAndBeautyId));
+        }
+
+        //RestaurantGetById
+        public HealthAndBeautyBaseViewModel HealthAndBeautyGetById(int id)
+        {
+            var obj = ds.HealthAndBeauty.Find(id);
+
+            return obj == null ? null : mapper.Map<HealthAndBeauty, HealthAndBeautyBaseViewModel>(obj);
+        }
+
+
+
+        //MusicAndEntertainment
+        public IEnumerable<MusicAndEntertainmentBaseViewModel> MusicAndEntertainmentGetAll()
+        {
+            return mapper.Map<IEnumerable<MusicAndEntertainment>, IEnumerable<MusicAndEntertainmentBaseViewModel>>(ds.MusicAndEntertainment.OrderBy(c => c.MusicAndEntertainmentId));
+        }
+
+        //RestaurantGetById
+        public MusicAndEntertainmentBaseViewModel MusicAndEntertainmentById(int id)
+        {
+            var obj = ds.MusicAndEntertainment.Find(id);
+
+            return obj == null ? null : mapper.Map<MusicAndEntertainment, MusicAndEntertainmentBaseViewModel>(obj);
+        }
+
 
 
 
